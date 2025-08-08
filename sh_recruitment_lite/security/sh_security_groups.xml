@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Security Category for School Training -->
+        <record id="category_recruitment_lite" model="ir.module.category">
+            <field name="name">Recruitment User Access</field>
+            <field name="description">Security groups for recruitment lite module</field>
+            <field name="sequence">1</field>
+        </record>
+
+
+        <!-- GROUP 1: Student - Most Restricted Access -->
+        <record id="group_applicant" model="res.groups">
+            <field name="name">Applicant</field>
+            <field name="category_id" ref="category_recruitment_lite"/>
+            <field name="comment">
+                Applicant can only:
+                - View their own records
+
+            </field>
+        </record>
+
+        <!-- GROUP 2: Hiring Manager - Medium Access -->
+        <record id="group_hiring_manager" model="res.groups">
+            <field name="name">Hiring Manager</field>
+            <field name="category_id" ref="category_recruitment_lite"/>
+            <field name="implied_ids" eval="[(4, ref('group_applicant'))]"/>
+            <field name="comment">
+                Hiring Manager can:
+                -  Can only see job positions assigned to them.
+            </field>
+        </record>
+
+        <!-- GROUP 3: Recruitment Admin - Full Access -->
+        <record id="group_recruitment_administrator" model="res.groups">
+            <field name="name">Recruitment Admin</field>
+            <field name="category_id" ref="category_recruitment_lite"/>
+            <field name="implied_ids" eval="[(4, ref('group_hiring_manager'))]"/>
+            <field name="comment">
+                Recruitment Admin can:
+                - Can see and do everything
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Main Menu -->
+        <menuitem id="menu_recruitment_root" name="Recruitment" sequence="0"/>
+
+        <!-- Job Positions Menu -->
+        <menuitem id="menu_job_positions_menu" name="Job Positions" parent="menu_recruitment_root" action="recruitment_job_actions"/>
+
+        <!-- Job Positions Menu -->
+        <menuitem id="menu_applicants_menu" name="Applicants" parent="menu_recruitment_root" action="recruitment_applicant_actions"/>
+
+        <!-- Configuration Menu -->
+        <menuitem id="menu_configutation_menu" name="Configuration" parent="menu_recruitment_root"/>
+
+        <!-- Submenu in Configuration -->
+        <menuitem id="menu_application_satges_submenu" name="Applicantion Stages" parent="menu_configutation_menu" action="recruitment_stage_actions"/>
+        <menuitem id="menu_application_skills_submenu" name="Applicantion Skills" parent="menu_configutation_menu" action="recruitment_skill_actions"/>
+
+
+    </data>
+</odoo>
+
+
+
+<!-- <odoo>
+        <menuitem id="menu_recruitment_main" name="Recruitment"/>
+
+
+
+
+        <menuitem id="menuitemone" name="Job Positions" parent="menu_recruitment_main" action="recruitment_job_actions"/>
+        
+        <menuitem id="menuitemsecond" name="Applicants" parent="menu_recruitment_main" action="recruitment_applicant_actions"/>
+        
+        <menuitem id="menuitemthird" name="Applicantion Stages" parent="menu_recruitment_main" action="recruitment_stage_actions"/>
+
+        <menuitem id="menuitemthird" name="Applicantion Skills" parent="menu_recruitment_main" action="recruitment_skill_actions"/>
+        
+
+</odoo> -->

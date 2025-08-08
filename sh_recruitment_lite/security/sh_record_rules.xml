@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- RULE 1: Students can only see their own student record -->
+        <record id="rule_applicant_own_record" model="ir.rule">
+            <field name="name">Applicant: Own Record Only</field>
+            <field name="model_id" ref="model_recruitment_applicant"/>
+            <field name="groups" eval="[(4, ref('group_applicant'))]"/>
+            <field name="domain_force">[('sh_applicant_user_id', '=', user.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+
+
+
+        <!-- RULE 2: Hiring manager can see only their applicant records in job -->
+        <record id="rule_hiring_own_record" model="ir.rule">
+            <field name="name">Hiring: Own Record Only</field>
+            <field name="model_id" ref="model_recruitment_job"/>
+            <field name="groups" eval="[(4, ref('group_hiring_manager'))]"/>
+            <field name="domain_force">[('sh_hiring_manager_id', "=", user.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+
+
+        <!-- RULE 2: Admin can see all records in applicant -->
+        <record id="rule_admin_own_record_for_applicant" model="ir.rule">
+            <field name="name">Admin: Own Record all for applicant</field>
+            <field name="model_id" ref="model_recruitment_applicant"/>
+            <field name="groups" eval="[(4, ref('group_recruitment_administrator'))]"/>
+            <field name="domain_force">[(1, "=", 1)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <!-- RULE 2: Adminccan see all records in job -->
+        <record id="rule_admin_own_record_for_job" model="ir.rule">
+            <field name="name">Admin: Own Record all</field>
+            <field name="model_id" ref="model_recruitment_job"/>
+            <field name="groups" eval="[(4, ref('group_recruitment_administrator'))]"/>
+            <field name="domain_force">[(1, "=", 1)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+
+
+
+
+    </data>
+</odoo>
