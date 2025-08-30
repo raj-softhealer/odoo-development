@@ -1,0 +1,22 @@
+<odoo>
+    <data>
+         <record id="items_number_wizard_form" model="ir.ui.view">
+        <field name="name">add.item.number.form</field>
+        <field name="model">add.item.number</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="item_num"/>
+
+                    </group>
+                </sheet>
+                <footer>
+                    <button string="Add" type="object" name="action_add_items_number" class="oe_highlight"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    </data>
+</odoo>

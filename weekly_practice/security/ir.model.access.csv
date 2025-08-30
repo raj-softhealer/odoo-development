@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_add_item,access.add.item,model_sale_custom_items,,1,1,1,1
+
+access_add_item_number,access.add.item.number,model_add_item_number,,1,1,1,1
+
+access_add_item_number_six_zero,access.add.item.number.six.zero,model_add_item_number_sixzero,,1,1,1,1

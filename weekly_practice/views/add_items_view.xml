@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<odoo>
+    <data>
+
+        <record id="add_items_list_form_main" model="ir.ui.view">
+            <field name="name">sale.order.form.custom_field</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="arch" type="xml">
+
+                <!-- Add Page Named 'items' in notebbok of sale quotation page -->
+                <xpath expr="//page[@name='customer_signature']" position="after">
+                    <page string="Items" name="items_wizard">
+                        <group>
+                            <field name="add_item" string=""/>
+                        </group>
+                    </page>
+                </xpath>
+
+
+                <xpath expr="//field[@name='state']" position="before">
+                    <button name="open_wizard_add_item" string="Add Items(0,0,{})" type="object" class="btn-primary"/>
+                </xpath>
+
+                <xpath expr="//field[@name='state']" position="before">
+                    <button name="open_wizard_add_item_using_six_zero" string="Add Items(5,0,0)" type="object" class="btn-primary"/>
+                </xpath>
+            </field>
+
+        </record>
+    </data>
+
+</odoo>

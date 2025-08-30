@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 
 
 <odoo>
@@ -7,11 +7,11 @@
         <record id="sale_product_description" model="ir.ui.view">
             <field name="name">sale.order.form.custom</field>
             <field name="model">sale.order</field>
-            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="inherit_id" ref="sale.view_order_form" />
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='product_template_id']" position="after">
 
-                    <field name="product_descrition"/>
+                    <field name="product_descrition" />
 
                 </xpath>
             </field>

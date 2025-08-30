@@ -7,7 +7,12 @@
     'category': 'Wkkly Practice',
     'depends': ['base', 'sale'],
     'data': [
+        'security/ir.model.access.csv',
         'views/product_description_view.xml',
+        'views/item_list_view.xml',
+        'views/add_items_view.xml',
+        'views/add_items_number_wizard.xml',
+        'views/add_items_number_sixzero_wizard.xml',
     ],
     'installable': True,
     'application': True,

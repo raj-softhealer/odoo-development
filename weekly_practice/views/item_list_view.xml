@@ -1,0 +1,52 @@
+<odoo>
+    <data>
+        <record id="view_item_list_from" model="ir.ui.view">
+            <field name="name">sale.custom.items.form</field>
+            <field name="model">sale.custom.items</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+
+                            <field name="item_names" />
+                            <field name="product_type" />
+                            <field name="product_quantity" />
+                            <field name="product_size" />
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_item_list_list" model="ir.ui.view">
+            <field name="name">sale.custom.items.list</field>
+            <field name="model">sale.custom.items</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="item_names" />
+                    <field name="product_type" />
+                    <field name="product_quantity" />
+                    <field name="product_size" />
+
+                </list>
+            </field>
+        </record>
+
+
+        <record id="action_item_list" model="ir.actions.act_window">
+        <field name="name">Items List</field>
+        <field name="res_model">sale.custom.items</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+
+
+    <menuitem id="menu_show_item_list" name="Items" sequence="0"/>
+
+  <menuitem id="menu_item_item_list" name="Item List" parent="menu_show_item_list" action="action_item_list" />
+
+
+
+    </data>
+</odoo>
