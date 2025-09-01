@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<odoo>
+    <data>
+
+        <record id="author_books_details" model="ir.ui.view">
+            <field name="name">res.partner.form.custom</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="arch" type="xml">
+                <!-- It will add page in notebook to list written books by author -->
+                <xpath expr="//div[@name='button_box']" position="inside">
+
+                    <!-- <div class="oe_button_box" name="smart_button_box"> -->
+
+                    <button class="oe_stat_button" type="object" name="action_view_books"
+                        icon="fa-book">
+                        <field string="Books" name="book_count" widget="statinfo" />
+                    </button>
+
+                    <!-- </div> -->
+
+                </xpath>
+            </field>
+        </record>
+
+        <!-- <record id="author_books_details" model="ir.ui.view">
+            <field name="name">res.partner.form.custom</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="arch" type="xml">
+                It will add page in notebook to list written books by author
+                <xpath expr="//page[@name='contact_addresses']" position="before">
+                    <page string="Books" name="written_books" autofocus="autofocus">
+                        <group>
+                            <field name="book_details" string=""/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record> -->
+
+    </data>
+</odoo>

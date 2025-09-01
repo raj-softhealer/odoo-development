@@ -1,0 +1,8 @@
+<odoo>
+    <data>
+        <menuitem id="main_menu_sh_library_management" name="Library Management" sequence="0"/>
+
+        <menuitem id="menu_item_book_invenotry" name="Book Inventory" parent="main_menu_sh_library_management" action="action_book_inventory"/>
+        
+    </data>
+</odoo>
