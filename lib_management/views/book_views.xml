@@ -1,0 +1,126 @@
+<odoo>
+  <!-- form view -->
+  <record id="view_library_book_form" model="ir.ui.view">
+    <field name="name">library.book.form</field>
+    <field name="model">library.book</field>
+    <field name="arch" type="xml">
+      <form string="Book">
+        <sheet>
+          <group>
+            <field name="name"/>
+            <!-- <field name="member_ids" widget="many2many_tags"/> -->
+            <field name="isbn"/>
+            <field name="author_id"/>
+            <field name="publisher_id"/>
+            <field name="published_date"/>
+            <field name="book_category" widget="many2many_tags"/>
+            <field name="warn"/>
+
+            <notebook>
+              <page string="Borrowed by" name="borrowed_by">
+                <field name="borrow_ids">
+                  <list>
+                    <field name="member_id"/>
+                    <field name="borrow_date"/>
+                    <field name="return_date"/>
+                  </list>
+                </field>
+
+              </page>
+            </notebook>
+          </group>
+        </sheet>
+        <chatter/>
+      </form>
+    </field>
+  </record>
+
+  <!-- List view -->
+
+  <record id="view_library_book_list" model="ir.ui.view">
+    <field name="name">library.book.list</field>
+    <field name="model">library.book</field>
+    <field name="arch" type="xml">
+      <list>
+        <field name="name"/>
+        <field name="author_id"/>
+        <field name="book_category"/>
+      </list>
+    </field>
+  </record>
+
+  <!-- Search view -->
+
+  <record id="view_library_book_search" model="ir.ui.view">
+    <field name="name">library.book.search</field>
+    <field name="model">library.book</field>
+    <field name="arch" type="xml">
+      <search>
+        <field name="name"/>
+        <field name="author_id"/>
+        <field name="book_category"/>
+      </search>
+    </field>
+  </record>
+
+  <!-- kanban view -->
+
+  <record id="view_library_book_kanban" model="ir.ui.view">
+    <field name="name">library.book.kanban</field>
+    <field name="model">library.book</field>
+    <field name="arch" type="xml">
+      <kanban>
+        <templates>
+          <t t-name="card">
+            <b>
+              <field name="name"/>
+            </b>
+            <field name="author_id"/>
+            <field name="book_category"/>
+          </t>
+        </templates>
+      </kanban>
+    </field>
+  </record>
+
+  <!-- calendar view -->
+
+  <record id="view_library_book_calendar" model="ir.ui.view">
+    <field name="name">library.book.lead</field>
+    <field name="model">library.book</field>
+    <field name="arch" type="xml">
+      <calendar date_start="activity_date_deadline">
+
+        <field name="name"/>
+        <field name="author_id"/>
+        <field name="book_category"/>
+      </calendar>
+    </field>
+  </record>
+
+
+  <!-- Activity view -->
+
+  <record id="view_library_book_activity" model="ir.ui.view">
+    <field name="name">library.book.activity</field>
+    <field name="model">library.book</field>
+    <field name="arch" type="xml">
+      <activity string="Scheduled Meetings">
+        <templates>
+          <div t-name="activity-box">
+            <field name="name"/>
+            <field name="author_id"/>
+            <field name="book_category"/>
+          </div>
+        </templates>
+      </activity>
+    </field>
+  </record>
+
+  <!-- Actions -->
+  <record id="action_library_book" model="ir.actions.act_window">
+    <field name="name">Books</field>
+    <field name="res_model">library.book</field>
+    <field name="view_mode">list,kanban,calendar,activity,form</field>
+  </record>
+</odoo>

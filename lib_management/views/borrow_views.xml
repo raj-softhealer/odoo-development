@@ -1,0 +1,63 @@
+<odoo>
+  <record id="view_library_borrow_form" model="ir.ui.view">
+    <field name="name">library.borrow.form</field>
+    <field name="model">library.borrow</field>
+    <field name="arch" type="xml">
+      <form string="Borrow Record">
+      <sheet>
+        <group>
+          <field name="prac" readonly="1"/>
+          <field name="book_id"/>
+          <field name="author_id" readonly="1"/>
+          <field name="member_id"/>
+          <field name="borrow_date"/>
+          <field name="return_date"/>
+          <field name="t_days"/>
+          <field name="state"/>
+        </group>
+      </sheet>
+        <chatter/>
+      </form>
+    </field>
+  </record>
+  
+  <!-- List view -->
+  <record id="view_library_borrow_list" model="ir.ui.view">
+    <field name="name">library.borrow.list</field>
+    <field name="model">library.borrow</field>
+    <field name="arch" type="xml">
+      <list>
+        <field name="book_id"/>
+        <field name="member_id"/>
+        <field name="borrow_date"/>
+        <field name="return_date"/>
+        <field name="state"/>
+      </list>
+    </field>
+  </record>
+
+  <!-- kanban view -->
+  <record id="view_library_borrow_kanban" model="ir.ui.view">
+    <field name="name">library.borrow.kanban</field>
+    <field name="model">library.borrow</field>
+    <field name="arch" type="xml">
+      <kanban default_group_by="borrow_date">
+      <templates>
+        <t t-name="card">
+        <b><field name="book_id"/></b>
+        <field name="member_id"/>
+        <field name="borrow_date"/>
+        <field name="return_date"/>
+        <!-- <field name="state"/> -->
+        </t>
+      </templates>
+      </kanban>
+    </field>
+  </record>
+
+  <record id="action_library_borrow" model="ir.actions.act_window">
+    <field name="name">Borrow Records</field>
+    <field name="res_model">library.borrow</field>
+    <field name="view_mode">list,kanban,form</field>
+  </record>
+</odoo>

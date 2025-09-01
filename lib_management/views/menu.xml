@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+
+<odoo>
+<data>
+  <menuitem id="menu_library_root" name="Library" sequence="0"/>
+
+  <menuitem id="menu_library_books" name="Books" parent="menu_library_root" action="action_library_book" />
+  <menuitem id="menu_library_borrows" name="Borrows" parent="menu_library_root" action="action_library_borrow"/>
+
+
+
+
+  <menuitem id="menu_library_configuration" name="Configuration" parent="menu_library_root"/>
+  <menuitem id="menu_library_configuration_categories" name="Category" parent="menu_library_configuration" action="action_library_category"/>
+  <menuitem id="menu_library_members" name="Members" parent="menu_library_configuration" action="action_library_member"/>
+  <menuitem id="menu_library_publishers" name="Publishers" parent="menu_library_configuration" action="action_library_publisher"/>
+  <menuitem id="menu_library_authors" name="Authors" parent="menu_library_configuration" action="action_library_author"/>
+  </data>
+
+</odoo>
