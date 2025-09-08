@@ -1,0 +1,12 @@
+<odoo>
+    <data>
+        <menuitem id="main_menu_sh_library_management" name="Library Management" sequence="0"/>
+
+        <menuitem id="menu_item_book_invenotry" name="Book Inventory" parent="main_menu_sh_library_management" action="action_book_inventory"/>
+
+        <menuitem id="menu_item_book_borrow" name="Book Borrow" parent="main_menu_sh_library_management" action="action_book_borrow"/>
+
+        <menuitem id="menu_library_member" name="Member" parent="main_menu_sh_library_management" action="action_library_member"/>
+        
+    </data>
+</odoo>

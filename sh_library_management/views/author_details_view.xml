@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<odoo>
+    <data>
+
+        <record id="author_books_details" model="ir.ui.view">
+            <field name="name">res.partner.form.custom</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="arch" type="xml">
+                <!-- It will add page in notebook to list written books by author -->
+                <xpath expr="//div[@name='button_box']" position="inside">
+
+                    <button class="oe_stat_button" type="object" name="action_view_books"
+                        icon="fa-book" invisible="is_company == True">
+                        <field string="Books" name="book_count" widget="statinfo" />
+                    </button>
+
+
+                    <button class="oe_stat_button" type="object" name="action_view_published_book"
+                        icon="fa-book" invisible="is_company == False">
+                        <field string="Published" name="publisher_books" widget="statinfo" />
+                    </button>
+
+                </xpath>
+
+
+                <xpath expr="//field[@name='category_id']" position="after">
+
+                        <field string="Active" name="is_active" widget="boolean_toggle"/>
+                   
+
+                </xpath>
+
+                
+
+            </field>
+        </record>
+
+
+        <!-- <record id="author_books_details" model="ir.ui.view">
+            <field name="name">res.partner.form.custom</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="arch" type="xml">
+                It will add page in notebook to list written books by author
+                <xpath expr="//page[@name='contact_addresses']" position="before">
+                    <page string="Books" name="written_books" autofocus="autofocus">
+                        <group>
+                            <field name="book_details" string=""/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record> -->
+
+    </data>
+</odoo>

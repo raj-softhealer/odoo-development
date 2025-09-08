@@ -1,0 +1,117 @@
+<odoo>
+  <data>
+
+    <!-- form view -->
+    <record id="view_book_inventory_form" model="ir.ui.view">
+      <field name="name">book.inventory.form</field>
+      <field name="model">book.inventory</field>
+      <field name="arch" type="xml">
+        <form string="Book Inventory">
+          <header>
+            <field name="status" widget="statusbar"/>
+          </header>
+          
+          <sheet>
+          <div class="oe_button_box" name="button_box">
+            
+            <button type="object" name="action_copies" class="oe_stat_button" icon="fa-book">
+              <field name="available_copies" string="Available Copies" widget="statinfo" />
+            </button>
+            
+          </div>
+          
+
+            <group>
+
+              <field name="book_title" />
+              <field name="author" widget="many2many_tags" domain="[('category_id','=','Author')]" />
+              <field name="categories" widget="many2many_tags" />
+              <field name="publisher" domain="[('category_id','=','Publisher')]" />
+              <field name="isbn" />
+              <field name="currency_id" invisible="1" />
+              <field name="price" />
+              <!-- <field name="status" /> -->
+              <field name="copies" string="Total Copies"/>
+
+            </group>
+            <notebook>
+              <page string="Brrowed By">
+                <field name="borrowed"/>
+              </page>
+
+              <page string="Total Borrowed History">
+                <field name="total_borrowed_history"/>
+              </page>
+            </notebook>
+          </sheet>
+          <chatter />
+        </form>
+      </field>
+    </record>
+
+
+    <!-- List view -->
+    <record id="view_book_inventory_list" model="ir.ui.view">
+      <field name="name">book.inventory.list</field>
+      <field name="model">book.inventory</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="book_title" />
+          <field name="author" widget="many2many_tags" />
+          <!-- <field name="categories"  widget="many2many_tags"/> -->
+          <!-- <field name="publisher"/> -->
+          <!-- <field name="isbn"/> -->
+          <field name="price" />
+          <field name="status" widget="badge" decoration-success="status == 'available'" />
+        </list>
+      </field>
+    </record>
+
+
+    <!-- Search view -->
+    <record id="view_book_inventory_search" model="ir.ui.view">
+      <field name="name">book.inventory.search</field>
+      <field name="model">book.inventory</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="book_title" />
+          <field name="author" widget="many2many_tags" />
+          <field name="categories" widget="many2many_tags" />
+          <field name="publisher" />
+          <field name="isbn" />
+        </search>
+      </field>
+    </record>
+
+
+    <!-- kanban view -->
+    <record id="view_book_inventory_kanban" model="ir.ui.view">
+      <field name="name">book.inventory.kanban</field>
+      <field name="model">book.inventory</field>
+      <field name="arch" type="xml">
+        <kanban>
+          <templates>
+            <t t-name="card">
+              <b>
+                <field name="book_title" />
+              </b>
+
+              <field name="author" widget="many2many_tags" />
+              <field name="categories" widget="many2many_tags" />
+
+            </t>
+          </templates>
+        </kanban>
+      </field>
+    </record>
+
+
+    <!-- Actions -->
+    <record id="action_book_inventory" model="ir.actions.act_window">
+      <field name="name">Book Inventory</field>
+      <field name="res_model">book.inventory</field>
+      <field name="view_mode">list,kanban,form</field>
+    </record>
+
+  </data>
+</odoo>

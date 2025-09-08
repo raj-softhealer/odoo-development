@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_book_inventory,access.book.inventory,model_book_inventory,,1,1,1,1
+
+access_category,access.category,model_book_categories,,1,1,1,1
+
+access_book_borrow,access.book.borrow,model_book_borrow,,1,1,1,1
+
+access_library_member,access.library.member,model_library_memberss,,1,1,1,1
+
+access_book_return,access.book.member,model_book_return,,1,1,1,1
+

@@ -1,0 +1,103 @@
+<odoo>
+  <data>
+
+    <!-- form view -->
+    <record id="view_book_borrow_form" model="ir.ui.view">
+      <field name="name">book.borrow.form</field>
+      <field name="model">book.borrow</field>
+      <field name="arch" type="xml">
+        <form string="Book Borrow">
+          <header>
+            <field name="status" widget="statusbar" />
+            <button type="object" string="Return Book" name="action_open_return_book_wizard" invisible="(status != 'borrowed')"/>
+          </header>
+
+          <sheet>
+
+            <group>
+
+              <field name="borrower_id" readonly="status == 'returned'" required="1" options="{'no_create': True}"/>
+              <field name="book_id" widget="many2many_tags" required="1" readonly="status == 'returned'"/>
+              <field name="author_id" widget="many2many_tags"/>
+              <field name="borrow_date" />
+              <field name="return_validity" readonly="1"/>
+              <field name="returned_on" invisible="status != 'returned'" readonly="status == 'returned'"/>
+              <field name="price" string="Payable Amount" readonly="1"/>
+              <field name="total_amount_paid" string="Total Paid Amount" readonly="1"/>
+
+
+            </group>
+          </sheet>
+          <chatter />
+        </form>
+      </field>
+    </record>
+
+
+    <!-- List view -->
+    <record id="view_book_borrow_list" model="ir.ui.view">
+      <field name="name">book.borrow.list</field>
+      <field name="model">book.borrow</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="borrower_id" />
+          <field name="book_id" widget="many2many_tags" />
+          <field name="author_id" widget="many2many_tags" />
+          <field name="borrow_date" />
+          <field name="return_validity" />
+          <field name="status" widget="badge" decoration-success="status == 'returned'" decoration-primary="status == 'borrowed'" />
+        </list>
+      </field>
+    </record>
+
+
+    <!-- Search view -->
+    <record id="view_book_borrow_search" model="ir.ui.view">
+      <field name="name">book.borrow.search</field>
+      <field name="model">book.borrow</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="borrower_id"/>
+          <field name="book_id" widget="many2many_tags" />
+          <field name="author_id" widget="many2many_tags" />
+          <field name="borrow_date" />
+          <field name="return_validity" />
+          <field name="status" />
+        </search>
+      </field>
+    </record>
+
+
+    <!-- kanban view -->
+    <record id="view_book_borrow_kanban" model="ir.ui.view">
+      <field name="name">book.borrow.kanban</field>
+      <field name="model">book.borrow</field>
+      <field name="arch" type="xml">
+        <kanban>
+          <templates>
+            <t t-name="card">
+              <b>
+                <field name="borrower_id" />
+              </b>
+
+              <field name="book_id" widget="many2many_tags" />
+              <field name="author_id" widget="many2many_tags" />
+              <field name="borrow_date" />
+              <field name="return_validity" />
+              <field name="status" />
+            </t>
+          </templates>
+        </kanban>
+      </field>
+    </record>
+
+
+    <!-- Actions -->
+    <record id="action_book_borrow" model="ir.actions.act_window">
+      <field name="name">Book Borrow</field>
+      <field name="res_model">book.borrow</field>
+      <field name="view_mode">list,kanban,form</field>
+    </record>
+
+  </data>
+</odoo>
