@@ -43,7 +43,6 @@ class AlternativePeoducts(models.Model):
             return res   
     
 
-
     def action_open_view_stock_alternate_product(self):      
         return {
             'name': f"{self.name} stock",

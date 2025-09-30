@@ -12,7 +12,7 @@ class ChangeProduct(models.TransientModel):
 
     sh_replace_prod_id = fields.Many2one("product.product",domain="[('id','in',sh_alternate_products_ids)]")
     sh_alternate_products_ids = fields.Many2many("product.product","current_produc_rel","current_prod","rel_all_prod")
-
+    sh_current_wizard_id=fields.Integer()
 
     @api.model
     def default_get(self,vals):
@@ -35,23 +35,24 @@ class ChangeProduct(models.TransientModel):
         
         if "sh_alternate_products_ids" in vals:
             res["sh_alternate_products_ids"] = data.product_id.sh_alt_products_ids
+        
+        if "sh_current_wizard_id" in vals:
+            res["sh_current_wizard_id"] = active_id
 
         return res
     
 
     def action_save_product_change(self):
-        active_id=self.env.context.get("active_id")
-        data=self.env["sale.order.line"].browse(active_id)
+
+        data=self.env["sale.order.line"].browse(self.sh_current_wizard_id)
 
         data.write({'product_id': self.sh_replace_prod_id})
 
 
     def action_open_view_stock(self):
 
-        data=self.env["sale.order.line"].browse(self.env.context.get('active_id'))
-
         return {
-            'name': f"{data.product_id.name} stock",
+            'name': f"{self.product_id.name} stock",
             'type' : 'ir.actions.act_window',
             'res_model': 'stock.view.wizard',
             'view_mode':'form',
