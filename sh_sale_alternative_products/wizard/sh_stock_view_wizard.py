@@ -14,7 +14,7 @@ class ViewStock(models.TransientModel):
         res = super().default_get(vals)
 
         if self.env.context['active_model'] == 'product.change':
-
+            print(f"\n\n\n\n default get occures {self.env.context}")
             prod=self.env["product.change"].browse(self.env.context.get('active_id'))
 
             warehouse_stock=self.env["stock.quant"].search([('product_id','=',prod.product_id.id),("location_id.usage", "=", "internal")])
@@ -23,6 +23,7 @@ class ViewStock(models.TransientModel):
 
 
         elif self.env.context['active_model'] == 'product.product':
+            print(f"\n\n\n\n default get occures {self.env.context}")
 
             warehouse_stock=self.env["stock.quant"].search([('product_id','=',self.env.context.get("active_id")),("location_id.usage", "=", "internal")])
 
@@ -33,22 +34,19 @@ class ViewStock(models.TransientModel):
 
     def action_go_back(self):
         if self.env.context['active_model'] == 'product.change':
-          
             return {
             'type' : 'ir.actions.act_window',
             'res_model': 'product.change',
-            'res_id': self.env.context.get('active_id'),
+            'res_id': self.env.context["wizard_id"],
             'view_mode':'form',
             'target': 'new',
             }
             
         elif self.env.context['active_model'] == 'product.product':
-            data = max(self.env["product.change"].search([]).ids)
-
             return {
             'type' : 'ir.actions.act_window',
             'res_model': 'product.change',
-            'res_id': data,
+            'res_id': self.env.context["wizard_id"],
             'view_mode':'form',
             'target': 'new',
             }

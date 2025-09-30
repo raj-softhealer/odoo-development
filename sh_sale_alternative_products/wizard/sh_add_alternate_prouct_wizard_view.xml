@@ -43,7 +43,7 @@
                 <div>
 
                   <button string="View Stock" class="oe_highlight" type="object"
-                    name="action_open_view_stock" />
+                    name="action_open_view_stock" context="{'wizard_id':id}"/>
 
                 </div>
 
@@ -66,7 +66,7 @@
                   <field name="lst_price" />
                   <field name="qty_available" />
                   <button string="View Stock" class="oe_highlight" type="object"
-                    name="action_open_view_stock_alternate_product" />
+                    name="action_open_view_stock_alternate_product" context="{'wizard_id':parent.id}"/>
                 </list>
 
               </field>

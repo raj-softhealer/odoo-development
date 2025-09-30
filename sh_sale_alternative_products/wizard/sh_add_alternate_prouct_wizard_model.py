@@ -50,7 +50,6 @@ class ChangeProduct(models.TransientModel):
 
 
     def action_open_view_stock(self):
-
         return {
             'name': f"{self.product_id.name} stock",
             'type' : 'ir.actions.act_window',
