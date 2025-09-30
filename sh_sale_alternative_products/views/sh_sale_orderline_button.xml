@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data>
+        <record id="add_alternate_product_button" model="ir.ui.view">
+            <field name="name">sale.order.custom.button</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='order_line']/list/field[@name='tax_id']" position="after">
+                    <button groups="sh_sale_alternative_products.group_for_admin" type="object" name="open_alternate_prod_wizard" class="btn-success" icon="fa-retweet"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

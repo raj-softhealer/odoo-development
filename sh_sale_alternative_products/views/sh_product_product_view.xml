@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data>
+        <record id="add_alternate_product" model="ir.ui.view">
+            <field name="name">product.product.form.custom</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view" />
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='inventory']" position="after">
+                    <page groups="sh_sale_alternative_products.group_for_admin" string="Alternative Products">
+
+                        <group>
+                            <group>
+                                <field name="alt_products" string="Select Alternate Products"
+                                    widget="many2many_tags" />
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
