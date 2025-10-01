@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_product_wizard,access.product.wizard,model_product_change,group_for_admin,1,1,1,1
+access_stock_view_wizard,access.stock.view.wizard,model_stock_view_wizard,group_for_admin,1,1,1,1
