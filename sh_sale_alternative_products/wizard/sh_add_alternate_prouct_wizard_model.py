@@ -1,5 +1,6 @@
-from odoo import fields,models,api
+# -*- coding: utf-8 -*-
 
+from odoo import fields,models,api
 
 class ChangeProduct(models.TransientModel):
     _name = 'product.change'
@@ -16,6 +17,10 @@ class ChangeProduct(models.TransientModel):
 
     @api.model
     def default_get(self,vals):
+        '''
+        This method will autofill info of of current clicked product
+        and also add alternate products of selected product
+        '''
         res=super().default_get(vals)
 
         active_id=self.env.context.get("active_id")
@@ -43,6 +48,10 @@ class ChangeProduct(models.TransientModel):
     
 
     def action_save_product_change(self):
+        '''
+        on opened wizard this method will write selected alternate 
+        product in sale.order.line on click on save.
+        '''
 
         data=self.env["sale.order.line"].browse(self.sh_current_wizard_id)
 
@@ -50,6 +59,9 @@ class ChangeProduct(models.TransientModel):
 
 
     def action_open_view_stock(self):
+        '''
+        on click on view stock of current selected product this method will call 
+        '''
         return {
             'name': f"{self.product_id.name} stock",
             'type' : 'ir.actions.act_window',

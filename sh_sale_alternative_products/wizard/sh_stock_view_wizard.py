@@ -1,5 +1,6 @@
-from odoo import fields,models,api
+# -*- coding: utf-8 -*-
 
+from odoo import fields,models,api
 
 class ViewStock(models.TransientModel):
     _name="stock.view.wizard"
@@ -10,6 +11,10 @@ class ViewStock(models.TransientModel):
 
     @api.model
     def default_get(self,vals):
+        '''
+        will get value of current product and find that product in "stock.quant"
+        model and show all the records
+        '''
 
         res = super().default_get(vals)
 
@@ -33,6 +38,9 @@ class ViewStock(models.TransientModel):
     
 
     def action_go_back(self):
+        '''
+        on click on "go back" this method will call
+        '''
         if self.env.context['active_model'] == 'product.change':
             return {
             'type' : 'ir.actions.act_window',

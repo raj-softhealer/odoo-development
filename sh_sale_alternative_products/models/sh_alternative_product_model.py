@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from odoo import fields,models,api
 
 class AlternativePeoducts(models.Model):
@@ -34,6 +36,7 @@ class AlternativePeoducts(models.Model):
                     if  t != prod.id and t not in prod.sh_alt_products_ids.ids:
                             prod.write({'sh_alt_products_ids':[(4,t)]})
 
+            # unlink from alternate from if removed from self
             new_prodct_data=rec.sh_alt_products_ids
 
             for old in old_prodct_data:
@@ -43,7 +46,9 @@ class AlternativePeoducts(models.Model):
             return res   
     
 
-    def action_open_view_stock_alternate_product(self):      
+    def action_open_view_stock_alternate_product(self):
+        '''Will open the stock view wizard on click on "view stock" in 
+        sale.order.line > open_alternate_prod_wizard (button) > sh_alternate_product_ids > view stock'''
         return {
             'name': f"{self.name} stock",
             'type' : 'ir.actions.act_window',
