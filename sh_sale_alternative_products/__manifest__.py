@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+# Part of SoftHealer Technologies PVT. LTD.
+
 {
     'name': 'Alternative Products Management',
     'version': '1.0',

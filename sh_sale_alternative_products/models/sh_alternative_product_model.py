@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# Part of SoftHealer Technologies PVT. LTD.
 
 from odoo import fields,models,api
 
