@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data>
+        <!-- Form View -->
+        <record id="form_view_sale_order_history" model="ir.ui.view">
+            <field name="name">sale.order.form.custom</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='order_lines']" position="after">
+                    <page string="Order History">
+
+                        <button class="oe_highlight" type="object" string="All Lines Reorder"
+                            name="action_re_order_all" invisible="sh_reorder_val == False"/>
+
+                        <field name="sh_order_history">
+                            <list>
+                                <field name="name" />
+                                <field name="date_order" />
+                                <field name="partner_id" />
+                                <field name="user_id" widget="many2one_avatar_user" />
+                                <field name="activity_ids" widget="list_activity" />
+                                <field name="company_id" />
+                                <field name="amount_total" />
+                                <field name="state" widget="badge"
+                                    decoration-success="state == 'sale'"
+                                    decoration-warning="state == 'sent'"
+                                    decoration-danger="state == 'cancel'" />
+
+                                <button icon="fa-retweet" type="object" name="action_re_order"
+                                    invisible="sh_reorder_val == False"
+                                    context="{'current__order_id':parent.id}" />
+
+                                <button icon="fa-eye" type="object" name="action_view_order" />
+                            </list>
+                        </field>
+
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

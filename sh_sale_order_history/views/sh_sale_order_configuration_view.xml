@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data>
+        <record id="view_sale_order_configuration" model="ir.ui.view">
+            <field name="name">res.config.settings.custom</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="sale.res_config_settings_view_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//block[@id='pricing_setting_container']" position="before">
+
+                    <block title="Sale Order History Configuration"
+                        name="sale_order_history_configuration">
+
+                        <setting id="number_of_orders"
+                            help="Will show only entered number of orders in sale order history">
+                            <field name="sh_num_of_orders" string="Last no. of Orders" />
+                        </setting>
+
+                        <setting id="number_of_days"
+                            help="Will show only entered number of day's orders in sale order history">
+                            <field name="sh_num_of_days" string="Last no. of Day's Order" />
+                        </setting>
+
+                        <setting id="order_stages"
+                            help="Will show only entered stages of order in sale order history">
+                            <field name="sh_order_satges" widget="many2many_tags" string="Stages"
+                                options="{'color_field': 'color'}" />
+                        </setting>
+
+                        <setting id="reordering" help="Will show button of reorder if checked">
+                            <field name="sh_reorder" string="Reorder" />
+                        </setting>
+
+
+                    </block>
+
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
