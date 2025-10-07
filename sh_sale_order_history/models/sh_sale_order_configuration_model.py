@@ -13,24 +13,24 @@ class CustomConfiguration(models.TransientModel):
     sh_reorder=fields.Boolean(related="company_id.sh_reorder",readonly=False)
 
 
-    @api.model
-    def default_get(self,vals):
-        '''
-        will get the values of stages in sale order and create with that value in
-        model "sale.order.stages" if not in model
-        '''
-        res = super().default_get(vals)
+    # @api.model
+    # def default_get(self,vals):
+    #     '''
+    #     will get the values of stages in sale order and create with that value in
+    #     model "sale.order.stages" if not in model
+    #     '''
+    #     res = super().default_get(vals)
 
-        stage_m2m_data= self.env["sale.order.stages"].search([])
-        temp_name_data = stage_m2m_data.mapped("name")
+    #     stage_m2m_data= self.env["sale.order.stages"].search([])
+    #     temp_name_data = stage_m2m_data.mapped("name")
 
-        satetes_data=self.env["sale.order"]._fields["state"].selection
+    #     satetes_data=self.env["sale.order"]._fields["state"].selection
 
-        if len(temp_name_data) != len(satetes_data):
+    #     if len(temp_name_data) != len(satetes_data):
 
-            for rec in satetes_data:
-                if rec[1] not in temp_name_data:
-                    stage_m2m_data.create({'name':rec[1]})
+    #         for rec in satetes_data:
+    #             if rec[1] not in temp_name_data:
+    #                 stage_m2m_data.create({'name':rec[1]})
 
-        return res
+    #     return res
 

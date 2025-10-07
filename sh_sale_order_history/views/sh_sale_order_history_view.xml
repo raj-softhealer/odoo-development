@@ -32,7 +32,7 @@
                                     invisible="sh_reorder_val == False"
                                     context="{'current__order_id':parent.id}" />
 
-                                <button icon="fa-eye" type="object" name="action_view_order" />
+                                <button icon="fa-eye" type="object" string="" name="action_view_order" />
                             </list>
                         </field>
 

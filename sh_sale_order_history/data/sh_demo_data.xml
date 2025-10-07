@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data>
+        
+        <record id="demo_data_quotation" model="sale.order.stages">
+            <field name="name">Quotation</field>
+            <field name="sh_states">draft</field>
+        </record>
+
+        <record id="demo_data_quotation_sent" model="sale.order.stages">
+            <field name="name">Quotation Sent</field>
+            <field name="sh_states">sent</field>
+        </record>
+
+        <record id="demo_data_sale_order" model="sale.order.stages">
+            <field name="name">Sales Order</field>
+            <field name="sh_states">sale</field>
+        </record>
+
+        <record id="demo_data_cancelled" model="sale.order.stages">
+            <field name="name">Cancelled</field>
+            <field name="sh_states">cancel</field>
+        </record>
+      
+
+    </data>
+</odoo>

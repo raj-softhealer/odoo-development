@@ -13,7 +13,8 @@
     "data": [
         'security/ir.model.access.csv',
         'views/sh_sale_order_configuration_view.xml',
-        'views/sh_sale_order_history_view.xml',    
+        'views/sh_sale_order_history_view.xml', 
+        'data/sh_demo_data.xml',
     ],
 
     "application":True,

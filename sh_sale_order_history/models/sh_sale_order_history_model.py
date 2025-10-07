@@ -29,20 +29,12 @@ class SaleOrderHistory(models.Model):
                 date_days= date.today() - timedelta(days=rec.company_id.sh_num_of_days)
 
 
-            satetes_data=self.env["sale.order"]._fields["state"].selection
-
-            temp_states_data=[]
-
-            for i in satetes_data:
-                if i[1] in rec.company_id.sh_order_satges.mapped("name"):
-                    temp_states_data.append(i[0])
-
-
             sale_order_data=self.search([
                 ('partner_id','=',rec.partner_id.id),
                 ('id','!=',rec.id),
+                # ('company_id','=',rec.company_id.id),
                 ('date_order','>=',date_days),
-                ('state','in',temp_states_data),
+                ('state','in',rec.company_id.sh_order_satges.mapped("sh_states")),
                 ],limit=rec.company_id.sh_num_of_orders if rec.company_id.sh_num_of_orders > 0 else "0")
             
             rec.sh_order_history=sale_order_data

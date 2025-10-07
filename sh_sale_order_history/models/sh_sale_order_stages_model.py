@@ -11,4 +11,10 @@ class SaleSatges(models.Model):
 
 
     name = fields.Char()
+    sh_states=fields.Selection([
+        ('draft','Quotation'),
+        ('sent','Quotation Sent'),
+        ('sale','Sales Order'),
+        ('cancel','Cancelled'),
+    ])
     color = fields.Integer(default=lambda r: random.randint(1,11))
