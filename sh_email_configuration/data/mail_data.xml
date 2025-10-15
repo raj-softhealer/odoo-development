@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data>
+        <!-- Custom Template for 'send by email'  -->
+        <record id="custom_email_template" model="mail.template">
+            <field name="name">Sales : Custom Email Template</field>
+            <field name="model_id" ref="sale.model_sale_order" />
+            <field name="subject">Testing Custom Email Template</field>
+            <field name="email_to"></field>
+            <field name="body_html" type="html">
+                <h1>Hii There</h1>
+                <p>This is custom template</p>
+            </field>
+            <field name="lang">{{object.user_id.partner_id.lang}}</field>
+        </record>
+
+        <!-- Template for send daily report -->
+        <record id="cron_job_mail_template" model="mail.template">
+            <field name="name">Daily Order Summary</field>
+            <field name="model_id" ref="model_sale_order" />
+            <field name="subject">Daily Summary</field>
+            <field name="email_from">{{object.env.user.email_formatted}}</field>
+            <field name="email_to"></field>
+            <field name="description">Thank You</field>
+            <field name="body_html" type="xml">
+                <div>
+                    <p>Hello, Dear <b><t t-esc="object.partner_id.name"/></b></p> <br/><br/>
+
+                    <p>Find the attached summary for <t t-esc="env['res.company'].browse(ctx.get('current_company')).name"/></p>
+                </div>
+            </field>
+            <field name="report_template_ids"
+                eval="[(4,ref('sh_email_configuration.action_for_cron_email'))]" />
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data>
+        <template id="sale_report" inherit_id="sale.report_saleorder_document">
+            <xpath expr="//div[@name='so_total_summary']" position="before">
+                <div
+                    t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-7 col-md-6'} ms-auto">
+                    <table class="o_total_table table table-borderless">
+                        <td>
+                            <span>Total Quantity</span>
+                        </td>
+                        <td class="text-end">
+                            <span t-field="doc.sh_total_quantity"></span>
+                        </td>
+
+                    </table>
+                </div>
+
+
+            </xpath>
+        </template>
+    </data>
+</odoo>
